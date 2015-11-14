@@ -1,0 +1,44 @@
+// https://coolors.co/app/0d1b2a-00a878-234b92-634133-4c5b5c
+// https://coolors.co/app/e8f1f2-d1faff-fa8334-110409-d2b48c
+
+// https://coolors.co/app/fbfef9-54494b-0a0a0a-4f3130-d2b48c
+// https://coolors.co/app/d36135-54494b-7fb069-4f3130-d2b48c Same as above with orange/green instead of black/white
+// https://coolors.co/app/48acf0-54494b-93a3bc-4f3130-d2b48c
+
+$color__black    : #0A0A0A; // Flat Black
+$color__white    : #FBFEF9; // Cream
+$color__grey     : #54494B; // Brown Grey
+
+$color__blue     : #3568B5; // Easy Blue
+$color__brown    : #4F3130; // Chocolate Milk
+$color__green    : #7FB069; // Light Green
+$color__tan      : #D2B48C; // Tan
+$color__yellow   : #F7EF99; // Easy Pale Yellow
+
+$color__silver   : #93A3BC; // Hard Silver
+$color__sky      : #48ACF0; // Saturated Sky
+$color__orange   : #D36135; // Soft Orange
+
+
+$color__text-main: $color__black;
+$color__text-screen: #2660A4;
+$color__text-input: #666;
+$color__text-input-focus: #111;
+$color__link: $color__blue;
+$color__link-visited: $color__link;
+$color__link-hover: $color__text-main;
+
+$color__border-button: #ccc #ccc #bbb;
+$color__border-button-hover: #ccc #bbb #aaa;
+$color__border-button-focus: #aaa #bbb #bbb;
+$color__border-input: #ccc;
+$color__border-abbr: #666;
+
+$color__background-body: $color__white;
+$color__background-screen: $color__silver;
+$color__background-hr: $color__text-main;
+$color__background-button: #e6e6e6;
+$color__background-pre: #eee;
+$color__background-ins: #fff9c0;
+
+

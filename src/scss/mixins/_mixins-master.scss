@@ -1,0 +1,188 @@
+
+
+
+/** 
+ * Media Queries Mixin from http://hmphry.com/useful-sass-mixins
+ * 
+ */
+
+$media-stack:
+  (group: iphone, id: general, rule: "only screen and (max-width: 568px)"),
+  (group: iphoneUp, id: general, rule: "only screen and (min-width: 568.1px)"),
+  (group: mobile, id: general, rule: "only screen and (max-width: 799.9px)"),
+  (group: tablet, id: general, rule: "only screen and (min-width: 800px)"),
+  (group: small, id: general, rule: "only screen and (min-width: 848px)"),
+  (group: small, id: inbetween, rule: "only screen and(min-width: 1056px) and (max-device-width: 1400px)"),
+  (group: large, id: general, rule: "only screen and(min-width: 1400px)"),
+  (group: print, id: general, rule: "only print"),
+  (group: custom, id: screen, rule: "only screen and");
+
+@mixin media($group, $id: general, $customRule: ""){
+  @each $media in $media-stack{
+    @if($group == map-get($media, group) and $id == map-get($media, id)){
+      $rule: map-get($media, rule);
+      @media #{$rule} #{$customRule} {@content};
+    }
+  }
+}
+
+
+/** 
+ * Aspect ratio mixin (thanks Chris Coyier! )
+ * https://css-tricks.com/snippets/sass/maintain-aspect-ratio-mixin/
+ */
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > .ratio-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+.sixteen-nine {
+  @include aspect-ratio(16, 9);
+}
+
+
+/** 
+ * Various Mixins
+ * 
+ */
+
+
+// Rem output with px fallback
+@mixin font-size($sizeValue: 1) {
+  font-size: ($sizeValue * 16) * 1px;
+  font-size: $sizeValue * 1rem;
+}
+
+// Center block
+@mixin center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Clearfix
+@mixin clearfix() {
+  content: "";
+  display: table;
+}
+
+// Clear after (not all clearfix need this also)
+@mixin clearfix-after() {
+  clear: both;
+}
+
+
+
+/** 
+ * Height & Width Mixins
+ *
+ */
+
+// Rem height output with px fallback
+@mixin width($sizeValue: 1) {
+  width: ($sizeValue * 16) * 1px;
+  width: $sizeValue * 1rem;
+}
+
+// Rem height output with px fallback
+@mixin height($sizeValue: 1) {
+  height: ($sizeValue * 16) * 1px;
+  height: $sizeValue * 1rem;
+}
+
+
+/** 
+ * Padding & Margin Mixins
+ *
+ */
+
+// Rem padding top output with px fallback
+@mixin padding-top($sizeValue: 1) {
+  padding-top: ($sizeValue * 16) * 1px;
+  padding-top: $sizeValue * 1rem;
+}
+
+// Rem padding right output with px fallback
+@mixin padding-right($sizeValue: 1) {
+  padding-right: ($sizeValue * 16) * 1px;
+  padding-right: $sizeValue * 1rem;
+}
+
+// Rem padding bottom output with px fallback
+@mixin padding-bottom($sizeValue: 1) {
+  padding-bottom: ($sizeValue * 16) * 1px;
+  padding-bottom: $sizeValue * 1rem;
+}
+
+// Rem padding left output with px fallback
+@mixin padding-left($sizeValue: 1) {
+  padding-left: ($sizeValue * 16) * 1px;
+  padding-left: $sizeValue * 1rem;
+}
+
+// Rem padding sides output with px fallback
+@mixin padding-sides($sizeValue: 1) {
+  padding-left: ($sizeValue * 16) * 1px;
+  padding-left: $sizeValue * 1rem;
+  padding-right: ($sizeValue * 16) * 1px;
+  padding-right: $sizeValue * 1rem;
+}
+
+// Rem padding output with px fallback
+@mixin padding($sizeValue: 1) {
+  padding: ($sizeValue * 16) * 1px;
+  padding: $sizeValue * 1rem;
+}
+
+
+// Rem margin top output with px fallback
+@mixin margin-top($sizeValue: 1) {
+  margin-top: ($sizeValue * 16) * 1px;
+  margin-top: $sizeValue * 1rem;
+}
+
+// Rem margin right output with px fallback
+@mixin margin-right($sizeValue: 1) {
+  margin-right: ($sizeValue * 16) * 1px;
+  margin-right: $sizeValue * 1rem;
+}
+
+// Rem margin bottom output with px fallback
+@mixin margin-bottom($sizeValue: 1) {
+  margin-bottom: ($sizeValue * 16) * 1px;
+  margin-bottom: $sizeValue * 1rem;
+}
+
+// Rem margin left output with px fallback
+@mixin margin-left($sizeValue: 1) {
+  margin-left: ($sizeValue * 16) * 1px;
+  margin-left: $sizeValue * 1rem;
+}
+
+// Rem margin sides output with px fallback
+@mixin margin-sides($sizeValue: 1) {
+  margin-left: ($sizeValue * 16) * 1px;
+  margin-left: $sizeValue * 1rem;
+  margin-right: ($sizeValue * 16) * 1px;
+  margin-right: $sizeValue * 1rem;
+}
+
+// Rem margin output with px fallback
+@mixin margin($sizeValue: 1) {
+  margin: ($sizeValue * 16) * 1px;
+  margin: $sizeValue * 1rem;
+}
+
+

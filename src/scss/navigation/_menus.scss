@@ -1,0 +1,143 @@
+.main-navigation {
+	clear: both;
+	display: block;
+	float: left;
+	width: 100%;
+
+	ul {
+		display: none;
+		list-style: none;
+		margin: 0;
+		padding-left: 0;
+
+		ul {
+			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+			float: left;
+			position: absolute;
+			top: 1.5em;
+			left: -999em;
+			z-index: 99999;
+
+			ul {
+				left: -999em;
+				top: 0;
+			}
+
+			li {
+				&:hover > ul,
+				&.focus > ul {
+					left: 100%;
+				}
+			}
+
+			a {
+				width: 200px;
+			}
+
+			:hover > a,
+			.focus > a {
+			}
+
+			a:hover,
+			a.focus {
+			}
+		}
+
+		li:hover > ul,
+		li.focus > ul {
+			left: auto;
+		}
+	}
+	li {
+		float: left;
+		position: relative;
+
+		&:hover > a,
+		&.focus > a {
+		}
+	}
+	a {
+		display: block;
+		text-decoration: none;
+	}
+
+	.current_page_item > a,
+	.current-menu-item > a,
+	.current_page_ancestor > a {
+	}
+}
+
+/* Small menu. */
+.menu-toggle,
+.main-navigation.toggled ul {
+	display: block;
+}
+
+@media screen and (min-width: 37.5em) {
+	.menu-toggle {
+		display: none;
+	}
+	.main-navigation ul {
+		display: block;
+	}
+}
+
+.comment-navigation,
+.posts-navigation,
+.post-navigation {
+
+	.site-main & {
+		margin: 0 0 1.5em;
+		overflow: hidden;
+	}
+
+	.nav-previous {
+		float: left;
+		width: 50%;
+	}
+
+	.nav-next {
+		float: right;
+		text-align: right;
+		width: 50%;
+	}
+}
+
+
+/* Social menu. */
+.menu-social {
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	li {
+		display: inline-block;
+		@include padding-sides(0.5);
+	}
+  a::before {
+    // display: inline-block;
+    vertical-align: top;
+    font-family: 'Fontawesome';
+    color: $color__link;
+    -webkit-font-smoothing: antialiased;
+    content: '\f0c0';
+  }
+
+	a[href*="facebook.com"]::before { content: '\f09a'; }
+	a[href*="twitter.com"]::before { content: '\f099'; }
+	a[href*="dribbble.com"]::before { content: '\f17d'; }
+	a[href*="codepen.io"]::before { content: '\f1cb'; }
+	a[href*="plus.google.com"]::before { content: '\f0d5'; }
+	a[href*="pinterest.com"]::before { content: '\f0d2'; }
+	a[href*="github.com"]::before { content: '\f09b'; }
+	a[href*="tumblr.com"]::before { content: '\f173'; }
+	a[href*="youtube.com"]::before { content: '\f167'; }
+	a[href*="flickr.com"]::before { content: '\f16e'; }
+	a[href*="vimeo.com"]::before { content: '\f194'; }
+	a[href*="instagram.com"]::before { content: '\f16d'; }
+	a[href*="linkedin.com"]::before { content: '\f0e1'; }
+  a[href*="feedburner.com"]::before { content: '\f09e'; }
+	a[href*="onnit.com"]::before { content: '\f240'; }
+	a[href*="fortawesome"]::before { content: '\f259'; } // Not a typo
+}
