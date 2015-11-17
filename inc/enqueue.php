@@ -20,4 +20,5 @@ function _loa_scripts() {
     wp_enqueue_script( 'comment-reply' );
   }
 }
+
 add_action( 'wp_enqueue_scripts', '_loa_scripts' );
