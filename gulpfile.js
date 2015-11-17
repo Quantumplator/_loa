@@ -44,7 +44,7 @@ var env,
     currentProj;
 
 //***** UPDATE THIS FOR EACH PROJECT - SHOULD BE YOUR localhost/dir - NO TRAILING SLASH! *****
-currentProj = 'djh/net';
+currentProj = 'mom/loa';
 
 // build per environment
 env = process.env.NODE_ENV || 'development';
@@ -114,7 +114,7 @@ gulp.task('compass', function() {
 // JAVASCRIPT
 gulp.task('js', function() {
   return gulp.src(paths.scripts)
-    .pipe(concat('main.js'))
+    .pipe(concat('main.min.js'))
     .pipe(gulp.dest(dest.scripts))
     .pipe(size())
     .pipe(gulpif(env==='production', uglify()))
