@@ -143,3 +143,16 @@ function _loa_social_menu() {
 	);
     }
 }
+
+/**
+ * Inline crit steez like a baows
+ * borrowed from http://ryantvenge.com/2015/03/criticalcss-in-wordpress/
+ * using a gulp snippet from http://ryantvenge.com/2015/04/criticalcss-with-gulp-js/
+ */
+function critCSS_wp_head() {
+	echo '<style>';
+	include get_stylesheet_directory() . '/inc/critical.css.php';
+	echo '</style>';
+}
+
+add_action( 'wp_head', 'critCSS_wp_head' );

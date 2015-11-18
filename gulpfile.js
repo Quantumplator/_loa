@@ -111,6 +111,49 @@ gulp.task('compass', function() {
     .pipe(size());
 });
 
+
+
+// CRIT
+gulp.task('critical', function() {
+  var request = require('request');
+  var path = require( 'path' );
+  var criticalcss = require("criticalcss");
+  var fs = require('fs');
+  var tmpDir = require('os').tmpdir();
+
+  var cssUrl = 'http://localhost:8888/mom/loa/wp-content/themes/_loa/style.css';
+  var cssPath = path.join( tmpDir, 'style.css' );
+  var includePath = path.join( __dirname, 'inc/critical.css.php' );
+  request(cssUrl).pipe(fs.createWriteStream(cssPath)).on('close', function() {
+    criticalcss.getRules(cssPath, function(err, output) {
+      if (err) {
+        throw new Error(err);
+      } else {
+        criticalcss.findCritical("http://localhost:8888/mom/loa/", { rules: JSON.parse(output) }, function(err, output) {
+          if (err) {
+            throw new Error(err);
+          } else {
+
+            fs.writeFile(includePath, output, function(err) {
+              if(err) {
+                return console.log(err);
+              }
+              console.log("Critical written to include!");
+            });
+
+          }
+        });
+      }
+    });
+  });
+
+});
+
+
+
+
+
+
 // JAVASCRIPT
 gulp.task('js', function() {
   return gulp.src(paths.scripts)
@@ -136,7 +179,7 @@ gulp.task('img', function () {
 });
 
 // DEFAULT
-gulp.task('default', ['compass', 'js', 'img', 'browser-sync'], function(){
+gulp.task('default', ['compass', 'critical', 'js', 'img', 'browser-sync'], function(){
   gulp.watch(paths.styles, ['compass']);
   gulp.watch(paths.js, ['js']);
   gulp.watch(paths.images, ['img']);
