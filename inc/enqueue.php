@@ -5,10 +5,10 @@
 function _loa_scripts() {
   // wp_enqueue_style( '_loa-style', get_stylesheet_uri() );
 
-  // If not in admin, move jquery to the footer & just kill jquery-migrate like a baows
+  // If not in admin, move jquery to the footer like a baows
   if(!is_admin()){
     wp_deregister_script( 'jquery' );
-    wp_deregister_script( 'jquery-migrate' );
+    // wp_deregister_script( 'jquery-migrate' );
     wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), false, NULL, true );
     wp_enqueue_script( 'jquery' );
   }
