@@ -8,8 +8,9 @@ var gulp       = require('gulp'),
   gulpif       = require('gulp-if'),
   imagemin     = require('gulp-imagemin'),
   jshint       = require('gulp-jshint'),
+  mincss       = require('gulp-minify-css'),
   minhtml      = require('gulp-minify-html'),
-  minifyInline = require('gulp-minify-inline');
+  minifyInline = require('gulp-minify-inline'),
   rename       = require('gulp-rename'),
   size         = require('gulp-size'),
   uglify       = require('gulp-uglify'),
@@ -115,7 +116,7 @@ gulp.task('compass', function() {
 
 
 // CRIT
-gulp.task('critical', function() {
+gulp.task('crit', function() {
   var request = require('request');
   var path = require( 'path' );
   var criticalcss = require("criticalcss");
@@ -152,7 +153,7 @@ gulp.task('critical', function() {
 // Min the Crit
 gulp.task('minCrit', function() {
   gulp.src('inc/critical.css.php')
-    .pipe(minifyInline())
+    .pipe(mincss())
     .pipe(gulp.dest('inc/'))
 });
 
@@ -183,7 +184,7 @@ gulp.task('img', function () {
 });
 
 // DEFAULT
-gulp.task('default', ['compass', 'critical', 'minCrit', 'js', 'img', 'browser-sync'], function(){
+gulp.task('default', ['compass', 'minCrit', 'js', 'img', 'browser-sync'], function(){
   gulp.watch(paths.styles, ['compass']);
   gulp.watch(paths.js, ['js']);
   gulp.watch(paths.images, ['img']);
