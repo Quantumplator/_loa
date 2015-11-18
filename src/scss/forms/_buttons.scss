@@ -10,7 +10,8 @@ input[type="submit"] {
 	color: rgba(0, 0, 0, .8);
 	@include font-size(0.75);
 	line-height: 1;
-	padding: .6em 1em .4em;
+	// padding: .6em 1em .4em;
+	@include padding(1);
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
 
 	&:hover {
