@@ -3,7 +3,7 @@
  * Enqueue scripts and styles.
  */
 function _loa_scripts() {
-  wp_enqueue_style( '_loa-style', get_stylesheet_uri() );
+  // wp_enqueue_style( '_loa-style', get_stylesheet_uri() );
 
   // If not in admin, move jquery to the footer & just kill jquery-migrate like a baows
   if(!is_admin()){
