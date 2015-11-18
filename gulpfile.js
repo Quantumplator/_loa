@@ -146,12 +146,7 @@ gulp.task('critical', function() {
       }
     });
   });
-
 });
-
-
-
-
 
 
 // JAVASCRIPT
