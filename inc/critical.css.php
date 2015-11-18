@@ -36,4 +36,3 @@ a{ color: rgb(53, 104, 181); text-decoration: none; }
 .widget{ margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; }
 .hentry{ margin-top: 0px; margin-right: 0px; margin-bottom: 1.5em; margin-left: 0px; }
  .entry-content{ margin-top: 1.5em; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; }
-body{ background-color: rgb(255, 238, 170) !important; }

@@ -9,6 +9,7 @@ var gulp       = require('gulp'),
   imagemin     = require('gulp-imagemin'),
   jshint       = require('gulp-jshint'),
   minhtml      = require('gulp-minify-html'),
+  minifyInline = require('gulp-minify-inline');
   rename       = require('gulp-rename'),
   size         = require('gulp-size'),
   uglify       = require('gulp-uglify'),
@@ -148,6 +149,14 @@ gulp.task('critical', function() {
   });
 });
 
+// Min the Crit
+gulp.task('minCrit', function() {
+  gulp.src('inc/critical.css.php')
+    .pipe(minifyInline())
+    .pipe(gulp.dest('inc/'))
+});
+
+
 
 // JAVASCRIPT
 gulp.task('js', function() {
@@ -174,7 +183,7 @@ gulp.task('img', function () {
 });
 
 // DEFAULT
-gulp.task('default', ['compass', 'critical', 'js', 'img', 'browser-sync'], function(){
+gulp.task('default', ['compass', 'critical', 'minCrit', 'js', 'img', 'browser-sync'], function(){
   gulp.watch(paths.styles, ['compass']);
   gulp.watch(paths.js, ['js']);
   gulp.watch(paths.images, ['img']);
