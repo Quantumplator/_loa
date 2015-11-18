@@ -9,8 +9,8 @@ function _loa_scripts() {
   if(!is_admin()){
     wp_deregister_script( 'jquery' );
     // wp_deregister_script( 'jquery-migrate' );
-    wp_register_script( 'jquery-core', includes_url( '/js/jquery/jquery.js' ), false, NULL, true );
-    wp_enqueue_script( 'jquery-core' );
+    // wp_register_script( 'jquery-core', includes_url( '/js/jquery/jquery.js' ), false, NULL, true );
+    // wp_enqueue_script( 'jquery-core' );
   }
 
   // Grab our own custom js
