@@ -14,7 +14,7 @@ function _loa_scripts() {
   }
 
   // Grab our own custom js
-  wp_enqueue_script( '_loa-main', get_template_directory_uri() . '/js/main.min.js', array('jquery-core'), '', true );
+  // wp_enqueue_script( '_loa-main', get_template_directory_uri() . '/js/main.min.js', array('jquery-core'), '', true );
 
   if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
     wp_enqueue_script( 'comment-reply' );
