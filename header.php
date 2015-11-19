@@ -16,10 +16,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-<script>
-!function(e){"use strict";var t=function(t,n,l){var o,a=e.document,r=a.createElement("link");if(n)o=n;else{var i=(a.body||a.getElementsByTagName("head")[0]).childNodes;o=i[i.length-1]}var d=a.styleSheets;r.rel="stylesheet",r.href=t,r.media="only x",o.parentNode.insertBefore(r,n?o:o.nextSibling);var s=function(e){for(var t=r.href,n=d.length;n--;)if(d[n].href===t)return e();setTimeout(function(){s(e)})};return r.onloadcssdefined=s,s(function(){r.media=l||"all"}),r};"undefined"!=typeof module?module.exports=t:e.loadCSS=t}("undefined"!=typeof global?global:this),loadCSS("http://localhost:3000/mom/loa/wp-content/themes/_loa/style.css");
-</script>
-<noscript><link href="http://loa.dylanjharris.net/wp-content/themes/_loa/style.css" rel="stylesheet"></noscript>
 
 <?php wp_head(); ?>
 </head>

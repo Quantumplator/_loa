@@ -126,7 +126,7 @@ add_action( 'save_post',     '_loa_category_transient_flusher' );
  * Social media icon menu as per http://justintadlock.com/archives/2013/08/14/social-nav-menus-part-2
  */
 function _loa_social_menu() {
-    if ( has_nav_menu( 'social' ) ) {
+  if ( has_nav_menu( 'social' ) ) {
 	wp_nav_menu(
 		array(
 			'theme_location'  => 'social',
@@ -146,13 +146,10 @@ function _loa_social_menu() {
 
 /**
  * Inline crit steez like a baows
- * borrowed from http://ryantvenge.com/2015/03/criticalcss-in-wordpress/
- * using a gulp snippet from http://ryantvenge.com/2015/04/criticalcss-with-gulp-js/
  */
 function critCSS_wp_head() {
-	echo '<style>';
-	include get_stylesheet_directory() . '/inc/critical.css.php';
-	echo '</style>';
+  include get_stylesheet_directory() . '/inc/criticalCSS.php';
+  include get_stylesheet_directory() . '/inc/loadCSS.php';
 }
-
 add_action( 'wp_head', 'critCSS_wp_head' );
+

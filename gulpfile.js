@@ -1,20 +1,18 @@
 var gulp       = require('gulp'),
   browserSync  = require('browser-sync'),
-  pngquant     = require('imagemin-pngquant'),
   autoprefixer = require('gulp-autoprefixer'),
   bower        = require('gulp-bower'),
   compass      = require('gulp-compass'),
-  concat       = require('gulp-concat'),
+  concat       = require('gulp-concat-util'),
   gulpif       = require('gulp-if'),
-  imagemin     = require('gulp-imagemin'),
   jshint       = require('gulp-jshint'),
   mincss       = require('gulp-minify-css'),
   minhtml      = require('gulp-minify-html'),
-  minifyInline = require('gulp-minify-inline'),
   rename       = require('gulp-rename'),
   size         = require('gulp-size'),
   uglify       = require('gulp-uglify'),
   util         = require('gulp-util'),
+  stylish      = require('jshint-stylish'),
   pjson        = require('./package.json'),
   reload       = browserSync.reload;
 
@@ -22,19 +20,22 @@ var gulp       = require('gulp'),
 var paths = {
   bower: './bower_components',
   scss: './src/scss/style.scss',
+  crit: './src/scss/critical.scss',
   styles: './src/scss/**/*.scss',
   scripts: './src/js/**/*.js',
   main: './src/js/main.js',
   images: './src/img/**/*',
   php: './**/*.php',
   css: './**/*.css',
-  js: './js/**/*.js'
+  js: './js/**/*.js',
+  src: './src/**/*'
 }
 
 // destinations for resources
 var dest = {
   css: '',
   php: '',
+  inc: './inc',
   scripts: './js',
   images: './img'
 }
@@ -51,7 +52,7 @@ currentProj = 'mom/loa';
 // build per environment
 env = process.env.NODE_ENV || 'development';
 
-if (env==='development') { 
+if (env==='development') {
   sassStyle = 'expanded';
 } else {
   sassStyle = 'compressed';
@@ -64,31 +65,44 @@ gulp.task('bower', function() { 
     .pipe(gulp.dest(paths.bower)) 
 });
 
-// DEVELOPERS! USE THIS to add Font Awesome to your fonts folder
-// * not included in default task
-gulp.task('fawesome', function() { 
-  return gulp.src(paths.bower + '/font-awesome/fonts/**.*') 
-    .pipe(gulp.dest('./fonts')); 
+// Run loadCSS once to
+gulp.task('loadCSS', function() {
+  return gulp.src('./src/loadCSS.js')
+    .pipe(uglify())
+    .pipe(rename({
+      basename: 'loadCSS',
+      suffix: '.min'
+    }))
+    .pipe(gulp.dest('crit'))
+    .pipe(concat.header('<script>'))
+    .pipe(concat.footer('</script><noscript><link href="wp-content/themes/_loa/style.css" rel="stylesheet"></noscript>'))
+    .pipe(rename({
+      basename: 'loadCSS',
+      extname: '.php'
+    }))
+    .pipe(gulp.dest(dest.inc));
 });
+
+
 
 // BROWSER-SYNC
 gulp.task('browser-sync', function() {
   // watch files
   var files = [
     paths.php,
+    paths.styles,
     paths.css,
     paths.js,
     paths.images
   ];
 
 
-browserSync.use({
+  browserSync.use({
     plugin: function () { /* noop */},
     hooks: {
-        'client:js': require("fs").readFileSync("./src/reloader.js", "utf-8") // Link to your file
-    }
+      'client:js': require("fs").readFileSync("./src/reloader.js", "utf-8") // Link to your file
+  }
 });
-
 
   // initialize browsersync
   browserSync.init(files, {
@@ -99,8 +113,36 @@ browserSync.use({
   });
 });
 
-// COMPASS
-gulp.task('compass', function() {
+
+// COMPASS CRITICAL
+gulp.task('compass:crit', function() {
+  return gulp.src(paths.crit)
+    .pipe(compass({
+      style: sassStyle,
+      css: 'crit',
+      sass: 'src/scss',
+      image: 'img'
+    }))
+    .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
+    .pipe(mincss())
+    .pipe(rename({
+      basename: 'critical',
+      suffix: '.min'
+    }))
+    .pipe(gulp.dest('./crit'))
+    .pipe(concat.header('<style>'))
+    .pipe(concat.footer('</style>'))
+    .pipe(rename({
+      basename: 'criticalCSS',
+      extname: '.php'
+    }))
+    .pipe(gulp.dest(dest.inc))
+    .pipe(size());
+});
+
+
+// COMPASS NON-CRITICAL
+gulp.task('compass:noncrit', function() {
   return gulp.src(paths.scss)
     .pipe(compass({
       style: sassStyle,
@@ -113,86 +155,22 @@ gulp.task('compass', function() {
     .pipe(size());
 });
 
-
-
 // JAVASCRIPT
 gulp.task('js', function() {
   return gulp.src(paths.scripts)
-    .pipe(concat('main.min.js'))
+    .pipe(concat('main.js'))
     .pipe(gulp.dest(dest.scripts))
     .pipe(size())
-    .pipe(gulpif(env==='production', uglify()))
-    .pipe(gulpif(env==='production', rename('main.min.js')))
-    .pipe(gulpif(env==='production', gulp.dest(dest.scripts)))
-    .pipe(gulpif(env==='production', size()));
-});
-
-// IMAGES
-gulp.task('img', function () {
-  return gulp.src(paths.images)
-    .pipe(gulpif(env==='production', imagemin({
-      progressive: true,
-      svgoPlugins: [{removeViewBox: false}],
-      use: [pngquant()]
-    })))
-    .pipe(gulpif(env==='production', gulp.dest(dest.images)))
-    .pipe(size());
+    .pipe(gulpif(env==='pro', uglify()))
+    .pipe(gulpif(env==='pro', rename('main.min.js')))
+    .pipe(gulpif(env==='pro', gulp.dest('./js')))
+    .pipe(gulpif(env==='pro', size()));
 });
 
 // DEFAULT
-gulp.task('default', ['compass', 'js', 'img', 'browser-sync'], function(){
-  gulp.watch(paths.styles, ['compass']);
-  gulp.watch(paths.js, ['js']);
-  gulp.watch(paths.images, ['img']);
+gulp.task('default', ['compass:crit', 'compass:noncrit', 'js', 'browser-sync'], function(){
+  gulp.watch(paths.src, ['compass:crit', 'compass:noncrit', 'js']);
 });
-
-
-
-
-
-// CRIT
-gulp.task('crit', function() {
-  var request = require('request');
-  var path = require( 'path' );
-  var criticalcss = require("criticalcss");
-  var fs = require('fs');
-  var tmpDir = require('os').tmpdir();
-
-  var cssUrl = 'http://localhost:8888/mom/loa/wp-content/themes/_loa/style.css';
-  var cssPath = path.join( tmpDir, 'style.css' );
-  var includePath = path.join( __dirname, 'inc/critical.css.php' );
-  request(cssUrl).pipe(fs.createWriteStream(cssPath)).on('close', function() {
-    criticalcss.getRules(cssPath, function(err, output) {
-      if (err) {
-        throw new Error(err);
-      } else {
-        criticalcss.findCritical("http://localhost:8888/mom/loa/", { rules: JSON.parse(output) }, function(err, output) {
-          if (err) {
-            throw new Error(err);
-          } else {
-
-            fs.writeFile(includePath, output, function(err) {
-              if(err) {
-                return console.log(err);
-              }
-              console.log("Critical written to include!");
-            });
-
-          }
-        });
-      }
-    });
-  });
-});
-
-// Min the Crit
-gulp.task('minCrit', function() {
-  gulp.src('inc/critical.css.php')
-    .pipe(mincss())
-    .pipe(gulp.dest('inc/'))
-});
-
-
 
 
 
