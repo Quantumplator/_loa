@@ -1,5 +1,6 @@
 p {
-	margin-bottom: 1.5em;
+	margin-top: 0;
+	@include margin-bottom(1.5);
 }
 
 dfn, cite, em, i {

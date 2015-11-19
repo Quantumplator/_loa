@@ -24,7 +24,22 @@
   border: 1px solid $color__silver;
   margin-right: auto;
   margin-left: auto;
+  box-shadow: 0px 5px 10px rgb(221,221,221);
   @include margin-ends(1.25);
   @include padding(1.25);
-  @include max-width(58.75);
+  @include max-width(58.75); // 940px
+}
+
+.content-area {
+  @include media(tablet, general) {
+    float: left;
+    @include max-width(37.5); // 600px
+  }
+}
+
+.widget-area {
+  @include media(tablet, general) {
+    float: right;
+    @include max-width(17.5); // 280px
+  }  
 }

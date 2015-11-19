@@ -308,11 +308,11 @@ button,
 input,
 select,
 textarea {
-  color: #000;
+  color: #111;
   font-family: Arial, sans-serif;
-  font-size: 16px;
-  font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1.6;
+  font-size: 15px;
+  font-size: 0.9375rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -320,7 +320,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
-  margin-bottom: 1.5em;
+  margin-top: 0;
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 
 dfn, cite, em, i {
@@ -340,7 +342,7 @@ pre {
   font-family: "Courier 10 Pitch", Courier, monospace;
   font-size: 15px;
   font-size: 0.9375rem;
-  line-height: 1.6;
+  line-height: 1.7;
   margin-bottom: 1.6em;
   max-width: 100%;
   overflow: auto;
@@ -394,14 +396,19 @@ blockquote:before, blockquote:after, q:before, q:after {
 }
 
 hr {
-  background-color: #000;
+  background-color: #111;
   border: 0;
   height: 1px;
-  margin-bottom: 1.5em;
+  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 ul, ol {
-  margin: 0 0 1.5em 3em;
+  margin: 0;
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
+  padding-left: 24px;
+  padding-left: 1.5rem;
 }
 
 ul {
@@ -415,7 +422,7 @@ ol {
 li > ul,
 li > ol {
   margin-bottom: 0;
-  margin-left: 1.5em;
+  margin-left: 0;
 }
 
 dt {
@@ -423,7 +430,13 @@ dt {
 }
 
 dd {
-  margin: 0 1.5em 1.5em;
+  margin-top: 0;
+  margin-right: 24px;
+  margin-right: 1.5rem;
+  margin-left: 24px;
+  margin-left: 1.5rem;
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 
 img {
@@ -651,13 +664,15 @@ a:hover, a:active {
 .alignleft {
   display: inline;
   float: left;
-  margin-right: 1.5em;
+  margin-right: 20px;
+  margin-right: 1.25rem;
 }
 
 .alignright {
   display: inline;
   float: right;
-  margin-left: 1.5em;
+  margin-left: 20px;
+  margin-left: 1.25rem;
 }
 
 .aligncenter {
@@ -776,6 +791,7 @@ a:hover, a:active {
   border: 1px solid #E8E8E8;
   margin-right: auto;
   margin-left: auto;
+  box-shadow: 0px 5px 10px #dddddd;
   margin-top: 20px;
   margin-top: 1.25rem;
   margin-bottom: 20px;
@@ -784,6 +800,22 @@ a:hover, a:active {
   padding: 1.25rem;
   max-width: 940px;
   max-width: 58.75rem;
+}
+
+@media only screen and (min-width: 800px) {
+  .content-area {
+    float: left;
+    max-width: 600px;
+    max-width: 37.5rem;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .widget-area {
+    float: right;
+    max-width: 280px;
+    max-width: 17.5rem;
+  }
 }
 
 /*--------------------------------------------------------------

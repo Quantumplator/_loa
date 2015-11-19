@@ -5,11 +5,13 @@ $color__white    : #fff;    // White
 $color__grey     : #FAFAFA; // Greywhite
 $color__silver   : #E8E8E8; // Silver lined cloud
 
+$color__lblack   : #111;    // Less Black
+
 $color__blue     : #000256; // Dark Night Blue
 $color__lblue    : #5B85Cf; // Chocolate Milk
 
 
-$color__text-main: $color__black;
+$color__text-main: $color__lblack;
 $color__text-screen: #2660A4;
 $color__text-input: #666;
 $color__text-input-focus: #111;
@@ -30,5 +32,3 @@ $color__background-hr: $color__text-main;
 $color__background-button: #e6e6e6;
 $color__background-pre: #eee;
 $color__background-ins: #fff9c0;
-
-
