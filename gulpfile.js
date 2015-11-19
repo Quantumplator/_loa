@@ -75,7 +75,7 @@ gulp.task('loadCSS', function() {
     }))
     .pipe(gulp.dest('crit'))
     .pipe(concat.header('<script>'))
-    .pipe(concat.footer('</script><noscript><link href="wp-content/themes/_loa/style.css" rel="stylesheet"></noscript>'))
+    .pipe(concat.footer('</script>'))
     .pipe(rename({
       basename: 'loadCSS',
       extname: '.php'
