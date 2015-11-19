@@ -90,18 +90,29 @@ $media-stack:
  *
  */
 
-// Rem height output with px fallback
+// Rem width output with px fallback
 @mixin width($sizeValue: 1) {
   width: ($sizeValue * 16) * 1px;
   width: $sizeValue * 1rem;
 }
+
+// Rem max-width output with px fallback
+@mixin max-width($sizeValue: 1) {
+  max-width: ($sizeValue * 16) * 1px;
+  max-width: $sizeValue * 1rem;
+}
+
 
 // Rem height output with px fallback
 @mixin height($sizeValue: 1) {
   height: ($sizeValue * 16) * 1px;
   height: $sizeValue * 1rem;
 }
-
+// Rem max-height output with px fallback
+@mixin max-height($sizeValue: 1) {
+  max-height: ($sizeValue * 16) * 1px;
+  max-height: $sizeValue * 1rem;
+}
 
 /** 
  * Padding & Margin Mixins
@@ -132,12 +143,21 @@ $media-stack:
   padding-left: $sizeValue * 1rem;
 }
 
+// Rem padding ends output with px fallback
+@mixin padding-ends($sizeValue: 1) {
+  padding-top: ($sizeValue * 16) * 1px;
+  padding-top: $sizeValue * 1rem;
+  padding-bottom: ($sizeValue * 16) * 1px;
+  padding-bottom: $sizeValue * 1rem;
+}
+
+
 // Rem padding sides output with px fallback
 @mixin padding-sides($sizeValue: 1) {
-  padding-left: ($sizeValue * 16) * 1px;
-  padding-left: $sizeValue * 1rem;
   padding-right: ($sizeValue * 16) * 1px;
   padding-right: $sizeValue * 1rem;
+  padding-left: ($sizeValue * 16) * 1px;
+  padding-left: $sizeValue * 1rem;
 }
 
 // Rem padding output with px fallback
@@ -171,12 +191,20 @@ $media-stack:
   margin-left: $sizeValue * 1rem;
 }
 
+// Rem margin ends output with px fallback
+@mixin margin-ends($sizeValue: 1) {
+  margin-top: ($sizeValue * 16) * 1px;
+  margin-top: $sizeValue * 1rem;
+  margin-bottom: ($sizeValue * 16) * 1px;
+  margin-bottom: $sizeValue * 1rem;
+}
+
 // Rem margin sides output with px fallback
 @mixin margin-sides($sizeValue: 1) {
-  margin-left: ($sizeValue * 16) * 1px;
-  margin-left: $sizeValue * 1rem;
   margin-right: ($sizeValue * 16) * 1px;
   margin-right: $sizeValue * 1rem;
+  margin-left: ($sizeValue * 16) * 1px;
+  margin-left: $sizeValue * 1rem;
 }
 
 // Rem margin output with px fallback

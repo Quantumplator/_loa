@@ -1,13 +1,9 @@
-// https://coolors.co/app/0d1b2a-00a878-234b92-634133-4c5b5c
-// https://coolors.co/app/e8f1f2-d1faff-fa8334-110409-d2b48c
 
-// https://coolors.co/app/fbfef9-54494b-0a0a0a-4f3130-d2b48c
-// https://coolors.co/app/d36135-54494b-7fb069-4f3130-d2b48c Same as above with orange/green instead of black/white
-// https://coolors.co/app/48acf0-54494b-93a3bc-4f3130-d2b48c
 
 $color__black    : #000;    // Black
-$color__white    : #fff; // Greywhite
+$color__white    : #fff;    // White
 $color__grey     : #FAFAFA; // Greywhite
+$color__silver   : #E8E8E8; // Silver lined cloud
 
 $color__blue     : #000256; // Dark Night Blue
 $color__lblue    : #5B85Cf; // Chocolate Milk
@@ -26,9 +22,10 @@ $color__border-button-hover: #ccc #bbb #aaa;
 $color__border-button-focus: #aaa #bbb #bbb;
 $color__border-input: #ccc;
 $color__border-abbr: #666;
+$color__border: $color__silver;
 
 $color__background-body: $color__grey;
-$color__background-screen: $color__grey;
+$color__background-screen: $color__silver;
 $color__background-hr: $color__text-main;
 $color__background-button: #e6e6e6;
 $color__background-pre: #eee;
