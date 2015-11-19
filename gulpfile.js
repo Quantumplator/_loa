@@ -115,6 +115,41 @@ gulp.task('compass', function() {
 
 
 
+// JAVASCRIPT
+gulp.task('js', function() {
+  return gulp.src(paths.scripts)
+    .pipe(concat('main.min.js'))
+    .pipe(gulp.dest(dest.scripts))
+    .pipe(size())
+    .pipe(gulpif(env==='production', uglify()))
+    .pipe(gulpif(env==='production', rename('main.min.js')))
+    .pipe(gulpif(env==='production', gulp.dest(dest.scripts)))
+    .pipe(gulpif(env==='production', size()));
+});
+
+// IMAGES
+gulp.task('img', function () {
+  return gulp.src(paths.images)
+    .pipe(gulpif(env==='production', imagemin({
+      progressive: true,
+      svgoPlugins: [{removeViewBox: false}],
+      use: [pngquant()]
+    })))
+    .pipe(gulpif(env==='production', gulp.dest(dest.images)))
+    .pipe(size());
+});
+
+// DEFAULT
+gulp.task('default', ['compass', 'js', 'img', 'browser-sync'], function(){
+  gulp.watch(paths.styles, ['compass']);
+  gulp.watch(paths.js, ['js']);
+  gulp.watch(paths.images, ['img']);
+});
+
+
+
+
+
 // CRIT
 gulp.task('crit', function() {
   var request = require('request');
@@ -156,44 +191,6 @@ gulp.task('minCrit', function() {
     .pipe(mincss())
     .pipe(gulp.dest('inc/'))
 });
-
-
-
-// JAVASCRIPT
-gulp.task('js', function() {
-  return gulp.src(paths.scripts)
-    .pipe(concat('main.min.js'))
-    .pipe(gulp.dest(dest.scripts))
-    .pipe(size())
-    .pipe(gulpif(env==='production', uglify()))
-    .pipe(gulpif(env==='production', rename('main.min.js')))
-    .pipe(gulpif(env==='production', gulp.dest(dest.scripts)))
-    .pipe(gulpif(env==='production', size()));
-});
-
-// IMAGES
-gulp.task('img', function () {
-  return gulp.src(paths.images)
-    .pipe(gulpif(env==='production', imagemin({
-      progressive: true,
-      svgoPlugins: [{removeViewBox: false}],
-      use: [pngquant()]
-    })))
-    .pipe(gulpif(env==='production', gulp.dest(dest.images)))
-    .pipe(size());
-});
-
-// DEFAULT
-gulp.task('default', ['compass', 'minCrit', 'js', 'img', 'browser-sync'], function(){
-  gulp.watch(paths.styles, ['compass']);
-  gulp.watch(paths.js, ['js']);
-  gulp.watch(paths.images, ['img']);
-});
-
-
-
-
-
 
 
 

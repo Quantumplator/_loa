@@ -9,8 +9,8 @@
 $media-stack:
   (group: iphone, id: general, rule: "only screen and (max-width: 568px)"),
   (group: iphoneUp, id: general, rule: "only screen and (min-width: 568.1px)"),
-  (group: mobile, id: general, rule: "only screen and (max-width: 799.9px)"),
-  (group: tablet, id: general, rule: "only screen and (min-width: 800px)"),
+  (group: mobile, id: general, rule: "only screen and (max-width: 939.99px)"),
+  (group: tablet, id: general, rule: "only screen and (min-width: 940px)"),
   (group: small, id: general, rule: "only screen and (min-width: 848px)"),
   (group: small, id: inbetween, rule: "only screen and(min-width: 1056px) and (max-device-width: 1400px)"),
   (group: large, id: general, rule: "only screen and(min-width: 1400px)"),
