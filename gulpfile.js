@@ -8,10 +8,11 @@ var gulp       = require('gulp'),
   jshint       = require('gulp-jshint'),
   mincss       = require('gulp-minify-css'),
   minhtml      = require('gulp-minify-html'),
+  pixrem       = require('gulp-pixrem'),
   rename       = require('gulp-rename'),
   size         = require('gulp-size'),
   uglify       = require('gulp-uglify'),
-  util         = require('gulp-util'),
+  gutil        = require('gulp-util'),
   stylish      = require('jshint-stylish'),
   pjson        = require('./package.json'),
   reload       = browserSync.reload;
@@ -118,12 +119,13 @@ gulp.task('browser-sync', function() {
 gulp.task('compass:crit', function() {
   return gulp.src(paths.crit)
     .pipe(compass({
-      style: sassStyle,
+      style: 'expanded',
       css: 'crit',
       sass: 'src/scss',
       image: 'img'
     }))
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
+    .pipe(pixrem())
     .pipe(mincss())
     .pipe(rename({
       basename: 'critical',
@@ -145,7 +147,7 @@ gulp.task('compass:crit', function() {
 gulp.task('compass:noncrit', function() {
   return gulp.src(paths.scss)
     .pipe(compass({
-      style: sassStyle,
+      style: 'expanded',
       css: '',
       sass: 'src/scss',
       image: 'img'

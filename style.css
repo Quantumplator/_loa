@@ -23,10 +23,9 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 /*--------------------------------------------------------------
 >>> STYLEGUIDE - "How I CSS"
 ----------------------------------------------------------------
-- I Gulp with Sass (SCSS) using...
-  - - 2 manually maintained crit & non-crit stylesheets (this should change...)
-  - - Px-to-REM (eliminates mixin)
-  - - Autoprefixer
+- I Gulp with Sass (SCSS) and use...
+  - - build tools in place of mixins as much as possible
+  - - 2 manually maintained crit & non-crit stylesheets
 - I stick to Mark Otto's Code Guide                     - https://mdo.github.io/code-guide/
 - I follow SMACSS conventions                           - https://smacss.com/
   - - .l- for layout, .is- for state
