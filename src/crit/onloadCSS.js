@@ -28,5 +28,7 @@ function onloadCSS( ss, callback ) {
 }
 var stylesheet = loadCSS( "wp-content/themes/_loa/style.css" );
 onloadCSS( stylesheet, function() {
-    console.log( "Stylesheet has asynchronously loaded." );
+  var expires = new Date(+new Date + (7 * 24 * 60 * 60 * 1000)).toUTCString();
+  document.cookie = 'fullCSS=true; expires=' + expires;
+  console.log( "Stylesheet loaded async and cookie has been set" );
 });

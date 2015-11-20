@@ -62,6 +62,7 @@ gulp.task('loadCSS', function() {
   return gulp.src(paths.crit)
     .pipe(concat('detects.js'))
     .pipe(uglify())
+    .pipe(size())
     .pipe(gulp.dest(dest.scripts));
 });
 
