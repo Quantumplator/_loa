@@ -58,6 +58,7 @@ gulp.task('bower', function() { 
 });
 
 
+// This tasks sets two js files up for use in /inc/enqueue.php
 gulp.task('detectsHAScookie', function() {
   return gulp.src(['./src/crit/loadCSS.js','./src/crit/onloadCSS.js'])
     .pipe(concat('detectsHAScookie.js'))
@@ -72,7 +73,7 @@ gulp.task('detectsSETcookie', function() {
     .pipe(size())
     .pipe(gulp.dest(dest.scripts));
 });
-// DEVELOPER! gulp after updating loadCSS(path) to uglify and pipe to production
+// DEVELOPER! gulp after updating loadCSS(paths) in both files above
 gulp.task('loadCSS', ['detectsHAScookie', 'detectsSETcookie'], function(){
 
 });
