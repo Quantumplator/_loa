@@ -143,5 +143,3 @@ function _loa_social_menu() {
 	);
     }
 }
-
-

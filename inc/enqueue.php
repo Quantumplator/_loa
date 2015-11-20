@@ -1,4 +1,8 @@
 <?php
+
+// We're going to do it this way:
+// http://gomakethings.com/inlining-critical-css-for-better-web-performance/
+
 /**
  * Enqueue scripts and styles.
  */
@@ -25,6 +29,8 @@ add_action( 'wp_enqueue_scripts', '_loa_scripts' );
 
 
 
+
+
 // NOTES FOR LATER
 // Tricks in here https://github.com/ericvalois/bulledev-v10/blob/master/functions.php#L29
 
@@ -39,3 +45,17 @@ add_action( 'wp_enqueue_scripts', '_loa_scripts' );
 //         wp_enqueue_script( 'jquery' ); 
 //     }
 // }
+
+
+// CONDITIONAL ENQUEUE'ING
+// function my_enqueue_scripts() {
+//     wp_register_script( 'js-1', get_stylesheet_directory_uri() . '/js/1.js' );
+//     wp_register_script( 'js-2', get_stylesheet_directory_uri() . '/js/2.js' );
+//     wp_register_script( 'js-3', get_stylesheet_directory_uri() . '/js/3.js' );
+//   if( is_page_template( 'template_file.php' ) ) :
+//     wp_enqueue_script( 'js-1', get_stylesheet_directory_uri() . '/js/1.js' );
+//     wp_enqueue_script( 'js-2', get_stylesheet_directory_uri() . '/js/2.js' );
+//     wp_enqueue_script( 'js-3', get_stylesheet_directory_uri() . '/js/3.js' );
+//   endif;
+// }
+// add_action( 'template_redirect', 'my_enqueue_scripts' );
