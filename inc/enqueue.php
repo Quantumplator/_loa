@@ -21,3 +21,21 @@ function _loa_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', '_loa_scripts' );
+
+
+
+
+// NOTES FOR LATER
+// Tricks in here https://github.com/ericvalois/bulledev-v10/blob/master/functions.php#L29
+
+// function atom_scripts_and_styles() {
+//     // Only on stage
+//     if( !strpos($_SERVER['SERVER_NAME'], 'bulledev.com') ){
+//         wp_enqueue_style( 'atom-style', get_stylesheet_uri() );
+//     }
+  
+//     // jQuery
+//     if( is_page(199) || is_page(1485) || is_page(1489) || is_page(1450) ){
+//         wp_enqueue_script( 'jquery' ); 
+//     }
+// }

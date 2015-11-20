@@ -23,9 +23,9 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 /*--------------------------------------------------------------
 >>> STYLEGUIDE - "How I CSS"
 ----------------------------------------------------------------
-- I Gulp with Sass (SCSS) and use...
-  - - build tools in place of mixins as much as possible
-  - - 2 manually maintained crit & non-crit stylesheets
+- I Gulp with Sass (SCSS) and use build tools in place of mixins as much as possible
+  - - Autoprefixer
+  - - Pixrem
 - I stick to Mark Otto's Code Guide                     - https://mdo.github.io/code-guide/
 - I follow SMACSS conventions                           - https://smacss.com/
   - - .l- for layout, .is- for state
@@ -52,3 +52,40 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # State
 # Theme
 --------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Testing
+--------------------------------------------------------------*/
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 12.5px;
+  font-size: 1.25rem;
+}
+
+@-webkit-keyframes anim {
+  from {
+    -webkit-transform: translatex(300px);
+            transform: translatex(300px);
+  }
+  to {
+    -webkit-transform: translatex(0);
+            transform: translatex(0);
+  }
+}
+
+@keyframes anim {
+  from {
+    -webkit-transform: translatex(300px);
+            transform: translatex(300px);
+  }
+  to {
+    -webkit-transform: translatex(0);
+            transform: translatex(0);
+  }
+}
+button {
+  -webkit-animation: anim 2s ease-in;
+          animation: anim 2s ease-in;
+}
