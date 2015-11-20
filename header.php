@@ -17,7 +17,24 @@
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
-
+<?php 
+/**
+ * Borrowed from the mighty pocketjoso https://gist.github.com/pocketjoso/58cb89ad9e69e4da297e 
+ */
+$pagefile = $_SERVER['DOCUMENT_ROOT'] . htmlspecialchars($_SERVER['PHP_SELF']);
+$critcssfile = $pagefile . ".css";
+if (file_exists($critcssfile)) { ?>
+	<!-- inline critical css -->
+	<style><?php include($critcssfile); ?></style>
+	<!-- use loadCSS to load full CSS async, from: https://github.com/filamentgroup/loadCSS --> 
+	<!-- (include file is built per project with Gulp.js) -->
+	<?php include get_stylesheet_directory() . '/inc/loadCSS.php'; ?>
+	<!-- provide a no JS fallback to get the full css -->
+	<?php include get_stylesheet_directory() . '/inc/noloadCSS.php';
+} else { ?>
+	<!-- no critical css for this page - just load full css in ye ol fashion render blocking way. -->
+	<link rel="stylesheet" href="<?php echo get_stylesheet_directory() . '/style.css'; ?>" />
+<?php } ?>
 <?php wp_head(); ?>
 </head>
 

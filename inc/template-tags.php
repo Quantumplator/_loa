@@ -144,13 +144,4 @@ function _loa_social_menu() {
     }
 }
 
-/**
- * Inline crit steez like a baows
- */
-function critCSS_wp_head() {
-  include get_stylesheet_directory() . '/inc/loadCSS.php';
-  include get_stylesheet_directory() . '/inc/noloadCSS.php';
-  // include get_stylesheet_directory() . '/inc/criticalCSS.php';
-}
-add_action( 'wp_head', 'critCSS_wp_head' );
 

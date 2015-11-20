@@ -1,1 +1,2 @@
-<noscript><link href="wp-content/themes/_loa/style.css" rel="stylesheet"></noscript>
+<noscript><link rel="stylesheet" href="<?php echo get_stylesheet_directory() . '/style.css'; ?>"></noscript>
+<!-- <noscript><link rel="stylesheet" href="wp-content/themes/_loa/style.css"></noscript> -->
