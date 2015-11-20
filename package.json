@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Quantumplator/_loa#readme",
   "devDependencies": {
     "browser-sync": "^2.9.4",
+    "critical": "^0.6.0",
     "criticalcss": "^0.6.1",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.0.1",

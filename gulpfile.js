@@ -1,5 +1,6 @@
 var gulp       = require('gulp'),
   browserSync  = require('browser-sync'),
+  critical     = require('critical'),
   autoprefixer = require('gulp-autoprefixer'),
   bower        = require('gulp-bower'),
   compass      = require('gulp-compass'),
@@ -21,6 +22,7 @@ var paths = {
   styles: './src/scss/style.scss',
   scss: './src/scss/**/*.scss',
   scripts: './src/js/**/*.js',
+  crit: './src/crit/**/*.js',
   img: './src/img/**/*',
   php: './**/*.php',
   css: './**/*.css',
@@ -34,8 +36,7 @@ var dest = {
   php: '',
   inc: './inc',
   scripts: './js',
-  images: './img',
-  crit: './crit'
+  images: './img'
 }
 
 // environment variables
@@ -49,24 +50,19 @@ currentProj = 'mom/loa';
 env = process.env.NODE_ENV || 'development';
 
 
-// DEVELOPER! USE THIS to install bower devDependencies if you get your fork on
+// DEVELOPER! gulp to install bower devDependencies if you get your fork on
 // * not included in default task
 gulp.task('bower', function() { 
   return bower()
     .pipe(gulp.dest(paths.bower)) 
 });
 
-// DEVELOPER! Run this after updating loadCSS(path) to minify the script and create include file
+// DEVELOPER! gulp after updating loadCSS(path) to uglify and pipe to production
 gulp.task('loadCSS', function() {
-  return gulp.src('./src/gulp/loadCSS.js')
+  return gulp.src(paths.crit)
+    .pipe(concat('detects.js'))
     .pipe(uglify())
-    .pipe(concat.header('<script>'))
-    .pipe(concat.footer('</script>'))
-    .pipe(rename({
-      basename: 'loadCSS',
-      extname: '.php'
-    }))
-    .pipe(gulp.dest(dest.inc));
+    .pipe(gulp.dest(dest.scripts));
 });
 
 
@@ -105,8 +101,8 @@ gulp.task('compass', function() {
       sass: 'src/scss',
       image: 'img'
     }))
-    .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
     .pipe(pixrem())
+    .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
     .pipe(size())
     .pipe(gulpif(env==='production', mincss()))
     .pipe(gulpif(env==='production', size()))

@@ -1,61 +1,70 @@
 <?php
-
-// We're going to do it this way:
-// http://gomakethings.com/inlining-critical-css-for-better-web-performance/
+/**
+* Load theme scripts in the footer
+* Big thanks to Chris Ferdinandi on this one!
+* ref: http://gomakethings.com/inlining-critical-css-for-better-web-performance/
+*/
+function _loa_load_theme_files() {
+  // If stylesheet is in browser cache, load it the traditional way
+  // Otherwise, inline critical CSS and load full stylesheet asynchronously
+  // See _loa_initialize_theme_detects()
+  if ( isset($_COOKIE['fullCSS']) && $_COOKIE['fullCSS'] === 'true' ) {
+    wp_enqueue_style( '_loa-theme-styles', get_template_directory_uri() . '/style.css', null, null, 'all' );
+  }
+  // Load JavaScript file
+  wp_enqueue_script( '_loa-theme-scripts', get_template_directory_uri() . '/js/main.min.js', null, null, true );
+}
+add_action('wp_enqueue_scripts', '_loa_load_theme_files');
 
 /**
- * Enqueue scripts and styles.
- */
-function _loa_scripts() {
-  // wp_enqueue_style( '_loa-style', get_stylesheet_uri() );
-
-  // If not in admin, move jquery to the footer like a baows
-  if(!is_admin()){
-    wp_deregister_script( 'jquery' );
-    wp_register_script( 'jquery-core', includes_url( '/js/jquery/jquery.js' ), false, NULL, true );
-    wp_enqueue_script( 'jquery-core' );
-  }
-
-  // Grab our own custom js
-  wp_enqueue_script( '_loa-main', get_template_directory_uri() . '/js/main.min.js', array('jquery-core'), '', true );
-
-  if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-    wp_enqueue_script( 'comment-reply' );
+* Include feature detect inits (in my case just loadCSS) in the header
+*/
+function _loa_initialize_theme_detects() {
+  // If stylesheet is in browser cache, load it the traditional way
+  if ( isset($_COOKIE['fullCSS']) && $_COOKIE['fullCSS'] === 'true' ) { ?>
+    <script>
+      // Contains only loadCSS.js and onloadCSS.js
+      // consider setting up some light feature detection (for things like SVG support)
+      <?php echo file_get_contents( get_template_directory_uri() . '/js/detects.js' ); ?>
+    </script>
+  <?php
+  // Otherwise, inline critical CSS and load full stylesheet asynchronously
+  } else { ?>
+    <script>
+      <?php echo file_get_contents( get_template_directory_uri() . '/js/detects.js' ); ?>
+      var stylesheet = loadCSS('<?php echo get_template_directory_uri() . "/style.css"; ?>');
+      onloadCSS( stylesheet, function() {
+        var expires = new Date(+new Date + (7 * 24 * 60 * 60 * 1000)).toUTCString();
+        document.cookie = 'fullCSS=true; expires=' + expires;
+        console.log( "Stylesheet loaded async and cookie has been set" );
+      });
+    </script>
+    <style>
+      <?php 
+      // THIS NEEDS TO RESPOND TO PAGE TEMPLATES IN THE FUTURE
+      echo file_get_contents( get_template_directory_uri() . '/css/critical.css' ); ?>
+    </style>
+  <?php
   }
 }
+add_action('wp_head', '_loa_initialize_theme_detects', 30);
 
-add_action( 'wp_enqueue_scripts', '_loa_scripts' );
-
-
-
-
-
-
-// NOTES FOR LATER
-// Tricks in here https://github.com/ericvalois/bulledev-v10/blob/master/functions.php#L29
-
-// function atom_scripts_and_styles() {
-//     // Only on stage
-//     if( !strpos($_SERVER['SERVER_NAME'], 'bulledev.com') ){
-//         wp_enqueue_style( 'atom-style', get_stylesheet_uri() );
-//     }
-  
-//     // jQuery
-//     if( is_page(199) || is_page(1485) || is_page(1489) || is_page(1450) ){
-//         wp_enqueue_script( 'jquery' ); 
-//     }
-// }
-
-
-// CONDITIONAL ENQUEUE'ING
-// function my_enqueue_scripts() {
-//     wp_register_script( 'js-1', get_stylesheet_directory_uri() . '/js/1.js' );
-//     wp_register_script( 'js-2', get_stylesheet_directory_uri() . '/js/2.js' );
-//     wp_register_script( 'js-3', get_stylesheet_directory_uri() . '/js/3.js' );
-//   if( is_page_template( 'template_file.php' ) ) :
-//     wp_enqueue_script( 'js-1', get_stylesheet_directory_uri() . '/js/1.js' );
-//     wp_enqueue_script( 'js-2', get_stylesheet_directory_uri() . '/js/2.js' );
-//     wp_enqueue_script( 'js-3', get_stylesheet_directory_uri() . '/js/3.js' );
-//   endif;
-// }
-// add_action( 'template_redirect', 'my_enqueue_scripts' );
+/**
+* Include script inits in the footer
+*/
+function _loa_initialize_theme_scripts() {
+  // If cookie isn't set, load a noscript fallback
+  if ( !isset($_COOKIE['fullCSS']) || $_COOKIE['fullCSS'] !== 'true' ) {
+  ?>
+    <noscript>
+      <link href='<?php echo get_template_directory_uri() . "/style.css"; ?>' rel='stylesheet' type='text/css'>
+    </noscript>
+  <?php
+  }
+  ?>
+<script>
+// Inline footer JavaScript and inits
+</script>
+<?php
+}
+add_action('wp_footer', '_loa_initialize_theme_scripts', 30);
