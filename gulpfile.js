@@ -57,14 +57,27 @@ gulp.task('bower', function() { 
     .pipe(gulp.dest(paths.bower)) 
 });
 
-// DEVELOPER! gulp after updating loadCSS(path) to uglify and pipe to production
-gulp.task('loadCSS', function() {
-  return gulp.src(paths.crit)
-    .pipe(concat('detects.js'))
+
+gulp.task('detectsHAScookie', function() {
+  return gulp.src(['./src/crit/loadCSS.js','./src/crit/onloadCSS.js'])
+    .pipe(concat('detectsHAScookie.js'))
     .pipe(uglify())
     .pipe(size())
     .pipe(gulp.dest(dest.scripts));
 });
+gulp.task('detectsSETcookie', function() {
+  return gulp.src(['./src/crit/loadCSS.js','./src/crit/onloadCSSset.js'])
+    .pipe(concat('detectsSETcookie.js'))
+    .pipe(uglify())
+    .pipe(size())
+    .pipe(gulp.dest(dest.scripts));
+});
+// DEVELOPER! gulp after updating loadCSS(path) to uglify and pipe to production
+gulp.task('loadCSS', ['detectsHAScookie', 'detectsSETcookie'], function(){
+
+});
+
+
 
 
 // BROWSER-SYNC

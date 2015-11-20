@@ -25,19 +25,13 @@ function _loa_initialize_theme_detects() {
     <script>
       // Contains only loadCSS.js and onloadCSS.js
       // consider setting up some light feature detection (for things like SVG support)
-      <?php echo file_get_contents( get_template_directory_uri() . '/js/detects.js' ); ?>
+      <?php echo file_get_contents( get_template_directory_uri() . '/js/detectsHAScookie.js' ); ?>
     </script>
   <?php
   // Otherwise, inline critical CSS and load full stylesheet asynchronously
   } else { ?>
     <script>
-      <?php echo file_get_contents( get_template_directory_uri() . '/js/detects.js' ); ?>
-      // var stylesheet = loadCSS('<?php echo get_template_directory_uri() . "/style.css"; ?>');
-      // onloadCSS( stylesheet, function() {
-      //   var expires = new Date(+new Date + (7 * 24 * 60 * 60 * 1000)).toUTCString();
-      //   document.cookie = 'fullCSS=true; expires=' + expires;
-      //   console.log( "Stylesheet loaded async and cookie has been set" );
-      // });
+      <?php echo file_get_contents( get_template_directory_uri() . '/js/detectsSETcookie.js' ); ?>
     </script>
     <style>
       <?php 

@@ -28,5 +28,7 @@ function onloadCSS( ss, callback ) {
 }
 var stylesheet = loadCSS( "http://loa.dylanjharris.net/wp-content/themes/_loa/style.css" );
 onloadCSS( stylesheet, function() {
-  console.log( "Cookie already set so I just loaded stylesheet asynchronously for you. Happy Birthday." );
+  var expires = new Date(+new Date + (7 * 24 * 60 * 60 * 1000)).toUTCString();
+  document.cookie = 'fullCSS=true; expires=' + expires;
+  console.log( "Stylesheet loaded async and cookie has been set. Booyah." );
 });

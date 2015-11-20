@@ -62,4 +62,4 @@ Licensed MIT
     w.loadCSS = loadCSS;
   }
 }( typeof global !== "undefined" ? global : this ));
-loadCSS( "wp-content/themes/_loa/style.css" );
+loadCSS( "http://loa.dylanjharris.net/wp-content/themes/_loa/style.css" );
