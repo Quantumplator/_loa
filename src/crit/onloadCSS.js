@@ -26,7 +26,7 @@ function onloadCSS( ss, callback ) {
     ss.onloadcssdefined( callback );
   }
 }
-var stylesheet = loadCSS( "http://loa.dylanjharris.net/wp-content/themes/_loa/style.css" );
+var stylesheet = loadCSS( "http://localhost:3000/mom/loa/wp-content/themes/_loa/style.css" );
 onloadCSS( stylesheet, function() {
   console.log( "Cookie already set so I just loaded stylesheet asynchronously for you. Happy Birthday." );
 });

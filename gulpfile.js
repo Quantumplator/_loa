@@ -74,9 +74,7 @@ gulp.task('detectsSETcookie', function() {
     .pipe(gulp.dest(dest.scripts));
 });
 // DEVELOPER! gulp after updating loadCSS(paths) in both files above
-gulp.task('loadCSS', ['detectsHAScookie', 'detectsSETcookie'], function(){
-
-});
+gulp.task('loadCSS', ['detectsHAScookie', 'detectsSETcookie'], function(){});
 
 
 

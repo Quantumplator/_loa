@@ -26,7 +26,7 @@ function onloadCSS( ss, callback ) {
     ss.onloadcssdefined( callback );
   }
 }
-var stylesheet = loadCSS( "http://loa.dylanjharris.net/wp-content/themes/_loa/style.css" );
+var stylesheet = loadCSS( "http://localhost:3000/mom/loa/wp-content/themes/_loa/style.css" );
 onloadCSS( stylesheet, function() {
   var expires = new Date(+new Date + (7 * 24 * 60 * 60 * 1000)).toUTCString();
   document.cookie = 'fullCSS=true; expires=' + expires;
