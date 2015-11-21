@@ -28,5 +28,5 @@ function onloadCSS( ss, callback ) {
 }
 var stylesheet = loadCSS( "http://localhost:3000/mom/loa/wp-content/themes/_loa/style.css" );
 onloadCSS( stylesheet, function() {
-  console.log( "Cookie already set so I just loaded stylesheet asynchronously for you. Happy Birthday." );
+  console.log( "Cookie already set so I just let the browser do it. Happy Birthday." );
 });
