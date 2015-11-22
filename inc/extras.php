@@ -19,6 +19,26 @@ function _loa_body_classes( $classes ) {
 		$classes[] = 'group-blog';
 	}
 
+  // Adds a class of t-home (template home) to front page for smacss layout
+  if ( is_front_page() ) {
+    $classes[] = 't-home';
+  }
+
+  // Adds a class of 
+  if ( is_home() || is_archive() || is_search() ) {
+    $classes[] = 't-list';
+
+    // Add 
+    if ( 'post' == get_post_type() ) {
+      $classes[] = 't-list';
+    }
+
+  }
+
+  if ( !is_front_page() && is_singular()) {
+    $classes[] = 't-single';
+  }
+
 	return $classes;
 }
 add_filter( 'body_class', '_loa_body_classes' );
