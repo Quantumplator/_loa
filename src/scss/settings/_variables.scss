@@ -93,7 +93,10 @@ $color__background-button: #e6e6e6;
 $color__background-pre: #eee;
 $color__background-ins: $color__yellow-high;
 
+// Form Control Settings
 
+$button__border-radius: 5px;
+$input__padding: 3px;
 
 // Typographical Settings
 
@@ -103,6 +106,7 @@ $font__code: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 $font__pre: "Courier 10 Pitch", Courier, monospace;
 
 // The default font family.
+
 $base-font-family: $font__main;
 
 

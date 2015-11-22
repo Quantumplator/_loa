@@ -56,11 +56,14 @@ html {
 /**
  * 1. Remove default margin.
  * 2. Fallback for when there is no custom background color defined.
+ * 3. Base typography steez - djh
  */
 
 body {
   margin: 0;
   background: $color__background-body;
+  color: $color__text-main;
+  font-family: $font__main;
 }
 
 /* HTML5 display definitions

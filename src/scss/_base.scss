@@ -1,14 +1,15 @@
 /*--------------------------------------------------------------
-# Base
+# Base - Elements (non-semantic)
 --------------------------------------------------------------*/
 
-body,
-button,
-input,
-select,
-textarea {
-  color: $color__text-main;
-  font-family: $font__main;
+
+div {}
+
+span {}
+
+hr {
+  background-color: $color__background-hr;
+  border: 0;
 }
 
 a {
@@ -16,9 +17,15 @@ a {
   text-decoration: none;
 }
 
+/*--------------------------------------------------------------
+# Base - Typography (semantic)
+--------------------------------------------------------------*/
+
 h1, h2, h3, h4, h5, h6 {
   clear: both;
 }
+
+p {}
 
 blockquote, q {
   quotes: "" "";
@@ -26,11 +33,6 @@ blockquote, q {
   &:after {
     content: "";
   }
-}
-
-hr {
-  background-color: $color__background-hr;
-  border: 0;
 }
 
 abbr, acronym {
@@ -43,9 +45,9 @@ mark, ins {
   text-decoration: none;
 }
 
-ul, ol,
-li > ul,
-li > ol {
+// Lists
+
+ul, ol {
   margin: 0 0 24px;
 }
 
@@ -70,11 +72,70 @@ table {
   width: 100%;
 }
 
-
-
-
-
-p {}
 dfn, cite, em, i {}
 address {}
 pre, code, kbd, tt, var {}
+
+
+/*--------------------------------------------------------------
+# Base - Forms
+--------------------------------------------------------------*/
+
+button,
+input,
+select,
+textarea {
+  color: $color__text-main;
+  font-family: $font__main;
+}
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  border: 1px solid;
+  border-color: $color__border-button;
+  border-radius: $button__border-radius;
+  background: $color__background-button;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 15px 17px rgba(255, 255, 255, 0.5), inset 0 -5px 12px rgba(0, 0, 0, 0.05);
+  color: rgba(0, 0, 0, .8);
+  line-height: 1;
+  padding: .6em 1em .6em;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  &:hover {
+    border-color: $color__border-button-hover;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 15px 17px rgba(255, 255, 255, 0.8), inset 0 -5px 12px rgba(0, 0, 0, 0.02);
+  }
+  &:active,
+  &:focus {
+    border-color: $color__border-button-focus;
+    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.5), inset 0 2px 5px rgba(0, 0, 0, 0.15);
+  }
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+textarea {
+  color: $color__text-input;
+  border: 1px solid $color__border-input;
+  border-radius: $button__border-radius;
+  &:focus {
+    color: $color__text-input-focus;
+  }
+}
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"] {
+  padding: $input__padding;
+}
+
+textarea {
+  padding-left: $input__padding;
+  width: 100%;
+}
+
