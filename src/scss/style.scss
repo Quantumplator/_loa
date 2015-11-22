@@ -96,11 +96,11 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 // @import "../prev/style";
 
 body {
-  background: $color__black;
-  @include tablet {
-    background: $color__silver;
-  }
-  @include desktop {
-    background: $color__grey;
-  }
+  // background: $color__black;
+  // @include tablet {
+  //   background: $color__graphite;
+  // }
+  // @include desktop {
+  //   background: $color__graphite;
+  // }
 }

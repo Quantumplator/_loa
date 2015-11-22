@@ -58,15 +58,35 @@ $indent-amount: 24px;
 // $normalize-vertical-rhythm to be automatically set to true.
 $normalize-vertical-rhythm: false;
 
+
+// These are universal colors for use in any project
+
+$color__graphite   : #666;
+
+
 // This is a site-specific pallet to be updated for each project
 
-$color__black    : #111;    // Black (never use real black)
-$color__white    : #fff;    // White (thats ok)
-$color__grey     : #e8e8e8; // Greywhite
-$color__silver   : #fafafa; // Silver lining
-$color__blue     : #5b85cf; // Sky Baby
-$color__navy     : #000256; // Dark & Saturated
+$color__black      : #111;    // Black (never use real black)
+$color__white      : #fff;    // White (thats ok)
+$color__grey       : #e8e8e8; // Greywhite
+$color__silver     : #fafafa; // Silver lining
+$color__blue       : #5b85cf; // Sky Baby
+$color__navy       : #000256; // Dark & Saturated
+
+$color__text-main        : $color__black;
+$color__text-input       : $color__graphite;
+$color__text-input-focus : $color__black;
+
+$color__link             : $color__blue;
+$color__link-visited     : $color__link;
+$color__link-hover       : darken($color__blue, 5%);
 
 
+// Typographical Settings
+
+$font__main: Arial, sans-serif;
+$font__heading: $font__main;
+$font__code: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+$font__pre: "Courier 10 Pitch", Courier, monospace;
 
 

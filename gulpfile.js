@@ -140,7 +140,7 @@ gulp.task('js', function() {
 
 
 // DEFAULT
-gulp.task('default', ['browser-sync', 'compass', 'js'], function(){
+gulp.task('default', ['compass', 'js', 'browser-sync'], function(){
   gulp.watch(paths.scss, ['compass']);
   gulp.watch(paths.scripts, ['js']);
 });

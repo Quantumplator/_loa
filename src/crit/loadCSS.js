@@ -62,4 +62,4 @@ Licensed MIT
     w.loadCSS = loadCSS;
   }
 }( typeof global !== "undefined" ? global : this ));
-loadCSS( "http://localhost:3000/mom/loa/wp-content/themes/_loa/style.css" );
+// loadCSS( "http://localhost:3000/mom/loa/wp-content/themes/_loa/style.css" );
