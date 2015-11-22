@@ -24,7 +24,7 @@
 <div id="page" class="hfeed site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', '_loa' ); ?></a>
 
-	<header id="masthead" class="site-header" role="banner">
+	<header id="masthead" class="site-header l-header" role="banner">
 		<div class="site-branding">
 			<?php if ( is_front_page() && is_home() ) : ?>
 				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
@@ -34,11 +34,20 @@
 			<p class="site-description"><?php bloginfo( 'description' ); ?></p>
 		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', '_loa' ); ?></button>
-			<?php _loa_primary_menu(); ?>
-			<?php // wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
-		</nav><!-- #site-navigation -->
+		<div class="site-controls">
+
+			<nav id="site-navigation" class="main-navigation" role="navigation">
+				<!-- Menu button with screen-reader-text toggle instructions -->
+				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span class="screen-reader-text" aria-hidden="false"><?php esc_html_e( 'Press enter to toggle', '_djh' ); ?></span><?php esc_html_e( 'Menu', '_loa' ); ?></button>
+				<?php _loa_primary_menu(); ?>
+			</nav><!-- #site-navigation -->
+
+			<nav id="site-search" class="main-search" role="navigation">
+				(search)
+			</nav><!-- #site-search -->
+
+		</div><!-- .site-controls -->
+
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">

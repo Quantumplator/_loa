@@ -836,6 +836,27 @@ textarea {
 /*--------------------------------------------------------------
 # Layout > Header
 --------------------------------------------------------------*/
+.l-header .site-controls {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+@media (min-width: 768px) {
+  .l-header .site-controls {
+    display: block;
+  }
+}
+.l-header .main-navigation,
+.l-header .main-search {
+  width: 50%;
+}
+@media (min-width: 768px) {
+  .l-header .main-navigation,
+  .l-header .main-search {
+    width: 100%;
+  }
+}
+
 /*--------------------------------------------------------------
 # Layout > Nav
 --------------------------------------------------------------*/

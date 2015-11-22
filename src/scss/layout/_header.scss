@@ -2,5 +2,17 @@
 # Layout > Header
 --------------------------------------------------------------*/
 .l-header {
-  
+  .site-controls {
+    display: flex;
+    @include tabletUp {
+      display: block;
+    }
+  }
+  .main-navigation,
+  .main-search {
+    width: 50%;
+    @include tabletUp {
+      width: 100%;
+    }
+  }
 }

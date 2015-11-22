@@ -4,12 +4,11 @@
 
 .main-navigation {
   clear: both; // Not needed?
-
 }
 
 .nav-menu {
   display: none;
-  @include desktop {
+  @include tabletUp {
     display: block;
   }
 }
@@ -20,7 +19,7 @@
 
 .menu-toggle {
   display: inline-block;
-  @include desktop {
+  @include tabletUp {
     display: none;
   }
 }
