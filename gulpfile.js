@@ -179,4 +179,10 @@ gulp.task('critical', function() {
 
 });
 
+gulp.task('mincrit', function(){
+  return gulp.src('./css/critical.css')
+    .pipe(mincss())
+    .pipe(gulp.dest('./css'));
+});
+
 
