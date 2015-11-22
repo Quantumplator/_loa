@@ -45,6 +45,7 @@ function _loa_setup() {
   // This theme uses wp_nav_menu() in one location.
   register_nav_menus( array(
     'primary' => esc_html__( 'Primary Menu', '_loa' ),
+    'footer' => esc_html__( 'Footer Menu', '_loa' ),
     'social' => esc_html__( 'Social Menu', '_loa' ),
   ) );
 

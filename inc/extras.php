@@ -21,22 +21,22 @@ function _loa_body_classes( $classes ) {
 
   // Adds a class of t-home (template home) to front page for smacss layout
   if ( is_front_page() ) {
-    $classes[] = 't-home';
+    $classes[] = 'l-home';
   }
 
   // Adds a class of t-list (template list) to all archives
   if ( is_home() || is_archive() || is_search() ) {
-    $classes[] = 't-list';
+    $classes[] = 'l-list';
 
     // Add t-posts class (template posts) in addition to t-list for all archives
     if ( 'post' == get_post_type() ) {
-      $classes[] = 't-posts';
+      $classes[] = 'l-posts';
     }
   }
 
   // Add t-single (template single) to any single page or post
   if ( !is_front_page() && is_singular()) {
-    $classes[] = 't-single';
+    $classes[] = 'l-single';
   }
 
 	return $classes;

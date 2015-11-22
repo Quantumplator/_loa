@@ -1,0 +1,26 @@
+/*--------------------------------------------------------------
+# Modules - Menus
+--------------------------------------------------------------*/
+
+.main-navigation {
+  clear: both; // Not needed?
+
+}
+
+.nav-menu {
+  display: none;
+  @include desktop {
+    display: block;
+  }
+}
+
+.toggled .nav-menu {
+  display: block;
+}
+
+.menu-toggle {
+  display: inline-block;
+  @include desktop {
+    display: none;
+  }
+}

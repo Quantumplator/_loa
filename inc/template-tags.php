@@ -125,21 +125,44 @@ add_action( 'save_post',     '_loa_category_transient_flusher' );
 /**
  * Social media icon menu as per http://justintadlock.com/archives/2013/08/14/social-nav-menus-part-2
  */
+function _loa_primary_menu() {
+  if ( has_nav_menu( 'primary' ) ) {
+		wp_nav_menu(
+			array(
+				'theme_location'  => 'primary',
+				'container'       => 'div',
+				'container_id'    => 'primary-menu',
+				'container_class' => 'menu',
+				'menu_id'         => 'primary-menu-items',
+				'menu_class'      => 'menu-items nav-menu',
+				'depth'           => 1,
+				'link_before'			=> '',
+				'link_after'			=> '',
+				'fallback_cb'     => '',
+			)
+		);
+  }
+}
+
+
+/**
+ * Social media icon menu as per http://justintadlock.com/archives/2013/08/14/social-nav-menus-part-2
+ */
 function _loa_social_menu() {
   if ( has_nav_menu( 'social' ) ) {
-	wp_nav_menu(
-		array(
-			'theme_location'  => 'social',
-			'container'       => 'div',
-			'container_id'    => 'menu-social',
-			'container_class' => 'menu-social',
-			'menu_id'         => 'menu-social-items',
-			'menu_class'      => 'menu-items',
-			'depth'           => 1,
-			'link_before'			=> '<span class="screen-reader-text">',
-			'link_after'			=> '</span>',
-			'fallback_cb'     => '',
-		)
-	);
-    }
+		wp_nav_menu(
+			array(
+				'theme_location'  => 'social',
+				'container'       => 'div',
+				'container_id'    => 'social-menu',
+				'container_class' => 'menu',
+				'menu_id'         => 'social-menu-items',
+				'menu_class'      => 'menu-items',
+				'depth'           => 1,
+				'link_before'			=> '<span class="screen-reader-text">',
+				'link_after'			=> '</span>',
+				'fallback_cb'     => '',
+			)
+		);
+  }
 }
