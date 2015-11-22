@@ -10,6 +10,7 @@ var gulp       = require('gulp'),
   minhtml      = require('gulp-minify-html'),
   pixrem       = require('gulp-pixrem'),
   rename       = require('gulp-rename'),
+  replace      = require('gulp-replace'),
   size         = require('gulp-size'),
   uglify       = require('gulp-uglify'),
   gutil        = require('gulp-util'),
@@ -61,6 +62,7 @@ gulp.task('bower', function() { 
 // This tasks sets two js files up for use in /inc/enqueue.php
 gulp.task('detectsHAScookie', function() {
   return gulp.src(['./src/crit/loadCSS.js','./src/crit/onloadCSS.js'])
+    .pipe(gulpif(env==='production', replace('http://localhost:3000/mom/loa/','http://loa.dylanjharris.net/')))
     .pipe(concat('detectsHAScookie.js'))
     .pipe(uglify())
     .pipe(size())
@@ -68,6 +70,7 @@ gulp.task('detectsHAScookie', function() {
 });
 gulp.task('detectsSETcookie', function() {
   return gulp.src(['./src/crit/loadCSS.js','./src/crit/onloadCSSset.js'])
+    .pipe(gulpif(env==='production', replace('http://localhost:3000/mom/loa/','http://loa.dylanjharris.net/')))
     .pipe(concat('detectsSETcookie.js'))
     .pipe(uglify())
     .pipe(size())
@@ -75,6 +78,7 @@ gulp.task('detectsSETcookie', function() {
 });
 // DEVELOPER! gulp after updating loadCSS(paths) in both files above
 gulp.task('loadCSS', ['detectsHAScookie', 'detectsSETcookie'], function(){});
+// for staging/production use > NODE_ENV=production gulp loadCSS
 
 
 
@@ -114,7 +118,7 @@ gulp.task('compass', function() {
       sass: 'src/scss',
       image: 'img'
     }))
-    .pipe(pixrem())
+    // .pipe(pixrem())
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
     .pipe(size())
     .pipe(gulpif(env==='production', mincss()))

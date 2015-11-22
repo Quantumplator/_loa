@@ -23,13 +23,13 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 /*--------------------------------------------------------------
 >>> STYLEGUIDE - "How I CSS"
 ----------------------------------------------------------------
-- I Gulp with Sass (SCSS) and use build tools in place of mixins as much as possible
+- I Gulp with Compass (SCSS) and use build tools in place of mixins where possible
   - - Autoprefixer
   - - Pixrem
 - I stick to Mark Otto's Code Guide                     - https://mdo.github.io/code-guide/
 - I follow SMACSS conventions                           - https://smacss.com/
   - - .l- for layout, .is- for state
-  - - .smntc- modules (.pod, .pod-constrained, .pod-callout, .pod-etc...)
+  - - .smntc- modules (.pod .pod-constrained .pod-callout etc...)
 - I don't use a "reset" but refactor normalize.css into the base styles
 - I use "classy selectors" and leave ID's exclusively for javascript
 - I keep classes & selector chains as short a.p.
@@ -43,24 +43,53 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 ----------------------------------------------------------------
 >>> TABLE OF CONTENTS: style.scss
 ----------------------------------------------------------------
-# Variables
-# Mixins
+# Initiate
+  ## Compass
+  ## Variables
+  ## Mixins
+  ## Normalize
 # Base
-  ## 
 # Layout
-# Module
+# Modules
 # State
 # Theme
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
-# Testing
+# Initiate
 --------------------------------------------------------------*/
-// @import "base/testing";
+@import "compass/support";
+@import "compass";
+@import "settings/variables";
+@import "settings/mixins";
+@import "settings/normalize";
 
+/*--------------------------------------------------------------
+# Base
+--------------------------------------------------------------*/
+@import "base";
 
+/*--------------------------------------------------------------
+# Layout
+--------------------------------------------------------------*/
+@import "layout/layouts";
 
+/*--------------------------------------------------------------
+# Module
+--------------------------------------------------------------*/
+@import "module/modules";
 
+/*--------------------------------------------------------------
+# State
+--------------------------------------------------------------*/
+@import "state/states";
 
+/*--------------------------------------------------------------
+# Theme
+--------------------------------------------------------------*/
+@import "theme/themes";
 
-
+/*--------------------------------------------------------------
+# Vendor
+--------------------------------------------------------------*/
+@import "vendor/vendors";
