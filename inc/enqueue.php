@@ -9,7 +9,7 @@ function _loa_load_theme_files() {
   // Otherwise, inline critical CSS and load full stylesheet asynchronously
   // See _loa_initialize_theme_detects()
   if ( isset($_COOKIE['fullCSS']) && $_COOKIE['fullCSS'] === 'true' ) {
-    // wp_enqueue_style( '_loa-theme-styles', get_template_directory_uri() . '/style.css', null, null, 'all' );
+    wp_enqueue_style( '_loa-theme-styles', get_template_directory_uri() . '/style.css', null, null, 'all' );
   }
   // Load JavaScript file
   wp_enqueue_script( '_loa-theme-scripts', get_template_directory_uri() . '/js/main.min.js', null, null, true );

@@ -36,10 +36,6 @@
     'opera':   null
   );
 
-
-// The default font family.
-$base-font-family: sans-serif;
-
 // The font sizes for h1-h6.
 $h1-font-size: 2.6  * $base-font-size;
 $h2-font-size: 1.6  * $base-font-size;
@@ -73,6 +69,8 @@ $color__silver     : #fafafa; // Silver lining
 $color__blue       : #5b85cf; // Sky Baby
 $color__navy       : #000256; // Dark & Saturated
 
+$color__yellow-high: #fff9c0; // Yellow Highlighter
+
 $color__text-main        : $color__black;
 $color__text-input       : $color__graphite;
 $color__text-input-focus : $color__black;
@@ -81,6 +79,21 @@ $color__link             : $color__blue;
 $color__link-visited     : $color__link;
 $color__link-hover       : darken($color__blue, 5%);
 
+$color__border-button: #ccc #ccc #bbb;
+$color__border-button-hover: #ccc #bbb #aaa;
+$color__border-button-focus: #aaa #bbb #bbb;
+$color__border-input: #ccc;
+$color__border-abbr: #666;
+$color__border: $color__silver;
+
+$color__background-body: $color__silver;
+$color__background-screen: $color__silver;
+$color__background-hr: $color__text-main;
+$color__background-button: #e6e6e6;
+$color__background-pre: #eee;
+$color__background-ins: $color__yellow-high;
+
+
 
 // Typographical Settings
 
@@ -88,5 +101,8 @@ $font__main: Arial, sans-serif;
 $font__heading: $font__main;
 $font__code: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 $font__pre: "Courier 10 Pitch", Courier, monospace;
+
+// The default font family.
+$base-font-family: $font__main;
 
 
