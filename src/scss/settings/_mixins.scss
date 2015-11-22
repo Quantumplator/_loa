@@ -1,3 +1,27 @@
 /*--------------------------------------------------------------
 # Initiate > Settings > Mixins
 --------------------------------------------------------------*/
+
+// Media Query Breakpoints
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+
+// The more you use this Phone mixin, the less you're coding responsibly (mobile first dum-dum!)
+@mixin phone {
+  @media (max-width: #{$tablet-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}

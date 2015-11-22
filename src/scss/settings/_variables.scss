@@ -49,7 +49,7 @@ $h5-font-size: 0.8  * $base-font-size;
 $h6-font-size: 0.8  * $base-font-size;
 
 // The amount lists and blockquotes are indented.
-$indent-amount: 40px;
+$indent-amount: 24px;
 
 // The following variable controls whether normalize-scss will output
 // font-sizes, line-heights and block-level top/bottom margins that form a basic
@@ -57,3 +57,16 @@ $indent-amount: 40px;
 // However, changing any of the variables above will cause
 // $normalize-vertical-rhythm to be automatically set to true.
 $normalize-vertical-rhythm: false;
+
+// This is a site-specific pallet to be updated for each project
+
+$color__black    : #111;    // Black (never use real black)
+$color__white    : #fff;    // White (thats ok)
+$color__grey     : #e8e8e8; // Greywhite
+$color__silver   : #fafafa; // Silver lining
+$color__blue     : #5b85cf; // Sky Baby
+$color__navy     : #000256; // Dark & Saturated
+
+
+
+

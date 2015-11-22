@@ -14,6 +14,7 @@ var gulp       = require('gulp'),
   size         = require('gulp-size'),
   uglify       = require('gulp-uglify'),
   gutil        = require('gulp-util'),
+  wait         = require('gulp-wait'),
   pjson        = require('./package.json'),
   reload       = browserSync.reload;
 
@@ -116,7 +117,6 @@ gulp.task('compass', function() {
       sass: 'src/scss',
       image: 'img'
     }))
-    // .pipe(pixrem())
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
     .pipe(size())
     .pipe(gulpif(env==='production', mincss()))
@@ -138,12 +138,16 @@ gulp.task('js', function() {
 });
 
 
+
 // DEFAULT
-gulp.task('default', ['compass', 'js', 'browser-sync'], function(){
+gulp.task('default', ['browser-sync', 'compass', 'js'], function(){
   gulp.watch(paths.scss, ['compass']);
   gulp.watch(paths.scripts, ['js']);
 });
 
+
+// CRITICAL
+// thank you Tvenge! http://ryantvenge.com/2015/04/criticalcss-with-gulp-js/
 gulp.task('critical', function() {
   var request = require('request');
   var path = require( 'path' );
