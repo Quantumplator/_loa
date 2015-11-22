@@ -1,0 +1,24 @@
+/*--------------------------------------------------------------
+# Modules - Alignments
+--------------------------------------------------------------*/
+
+// Used for page/post images and other modules
+.alignleft,
+.alignright {
+  display: inline;
+}
+
+.alignleft {
+  float: left;
+  margin-right: 1.333rem;
+}
+
+.alignright {
+  float: right;
+  margin-left: 1.333rem;
+}
+
+.aligncenter {
+  clear: both;
+  @include center-block;
+}

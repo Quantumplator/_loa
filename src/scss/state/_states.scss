@@ -3,28 +3,7 @@
 --------------------------------------------------------------*/
 
 
-// Link States
-a {
-  &:visited {
-    color: $color__link-visited;
-  }
-  &:hover,
-  &:focus,
-  &:active {
-    color: $color__link-hover;
-  }
-  &:focus {
-    outline: thin dotted;
-  }
-  &:hover,
-  &:active {
-    outline: 0;
-  }
-}
 
-
-
-// State Classes
 .is-hidden {
 
 }
