@@ -24,17 +24,17 @@ function _loa_body_classes( $classes ) {
     $classes[] = 't-home';
   }
 
-  // Adds a class of 
+  // Adds a class of t-list (template list) to all archives
   if ( is_home() || is_archive() || is_search() ) {
     $classes[] = 't-list';
 
-    // Add 
+    // Add t-posts class (template posts) in addition to t-list for all archives
     if ( 'post' == get_post_type() ) {
-      $classes[] = 't-list';
+      $classes[] = 't-posts';
     }
-
   }
 
+  // Add t-single (template single) to any single page or post
   if ( !is_front_page() && is_singular()) {
     $classes[] = 't-single';
   }
