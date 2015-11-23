@@ -21,3 +21,10 @@
     padding: 1rem;
   }
 }
+
+.site-content {
+  @include tabletUp {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

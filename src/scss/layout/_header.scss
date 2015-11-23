@@ -11,9 +11,8 @@
   .main-navigation,
   .main-search {
     width: 100%;
-    background: $color__silver;
     @include tabletUp {
-      width: 100%;
+      background: $color__silver;
     }
   }
 }

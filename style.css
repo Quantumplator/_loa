@@ -844,12 +844,11 @@ textarea {
 .l-header .main-navigation,
 .l-header .main-search {
   width: 100%;
-  background: #fafafa;
 }
 @media (min-width: 768px) {
   .l-header .main-navigation,
   .l-header .main-search {
-    width: 100%;
+    background: #fafafa;
   }
 }
 
@@ -882,6 +881,13 @@ textarea {
 @media (max-width: 767px) {
   .site {
     padding: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .site-content {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
 
@@ -1030,11 +1036,19 @@ textarea {
 @media (max-width: 767px) {
   .toggled .nav-menu {
     display: block;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .toggled .menu-item {
+    background: #fafafa;
   }
 }
 
 .menu-toggle {
   width: 100%;
+  max-width: 180px;
   display: block;
 }
 @media (min-width: 768px) {

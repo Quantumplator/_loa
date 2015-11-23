@@ -39,10 +39,19 @@
 .toggled .nav-menu {
   @include mobile {
     display: block;
+    margin-top: 0;
   }
 }
+.toggled .menu-item {
+  @include mobile {
+    background: $color__silver;
+  }
+}
+
+
 .menu-toggle {
   width: 100%;
+  max-width: 180px;
   display: block;
   @include tabletUp {
     display: none;
