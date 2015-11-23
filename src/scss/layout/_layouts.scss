@@ -17,14 +17,9 @@
   max-width: 940px;
   margin: 0 auto;
   background: $color__white;
-  @include mobile {
-    padding: 1rem;
-  }
 }
 
 .site-content {
-  @include tabletUp {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
+  padding-left: 1rem;
+  padding-right: 1rem;
 }

@@ -878,17 +878,10 @@ textarea {
   margin: 0 auto;
   background: #fff;
 }
-@media (max-width: 767px) {
-  .site {
-    padding: 1rem;
-  }
-}
 
-@media (min-width: 768px) {
-  .site-content {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
+.site-content {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 /*--------------------------------------------------------------
