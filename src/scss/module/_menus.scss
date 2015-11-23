@@ -3,31 +3,46 @@
 --------------------------------------------------------------*/
 
 .main-navigation {
-  clear: both; // Not needed?
+  clear: both;
 }
 
 .nav-menu {
   display: none;
+  padding-left: 0;
   @include tabletUp {
-    display: block;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $color__grey;
   }
 }
-
 .menu-item {
   display: block;
   @include tabletUp {
-    display: inline-block;
+    flex: 1 1 auto;
+    text-align: center;
+    white-space: nowrap;
+  }
+  a {
+    display: block;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    color: $color__navy;
+    @include mobile {
+      padding-left: $indent-amount;
+    }
+    &:hover {
+      background: $color__white;
+      color: $color__link;
+    }
   }
 }
-
 .toggled .nav-menu {
   @include mobile {
     display: block;
   }
 }
-
 .menu-toggle {
-  width: 50%;
+  width: 100%;
   display: block;
   @include tabletUp {
     display: none;

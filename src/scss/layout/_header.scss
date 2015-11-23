@@ -3,14 +3,15 @@
 --------------------------------------------------------------*/
 .l-header {
   .site-controls {
-    display: flex;
+    display: flex-column;
     @include tabletUp {
       display: block;
     }
   }
   .main-navigation,
   .main-search {
-    width: 50%;
+    width: 100%;
+    background: $color__silver;
     @include tabletUp {
       width: 100%;
     }

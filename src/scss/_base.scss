@@ -64,10 +64,6 @@ mark, ins {
 
 // Lists
 
-ul, ol {
-  margin: 0 0 24px;
-}
-
 ul {
   list-style: disc;
 }
@@ -85,8 +81,8 @@ dd {
 }
 
 table {
-  margin: 0 0 24px;
   width: 100%;
+  @include trailer(1);
 }
 
 dfn, cite, em, i {}

@@ -727,10 +727,6 @@ mark, ins {
   text-decoration: none;
 }
 
-ul, ol {
-  margin: 0 0 24px;
-}
-
 ul {
   list-style: disc;
 }
@@ -748,8 +744,9 @@ dd {
 }
 
 table {
-  margin: 0 0 24px;
   width: 100%;
+  margin-bottom: 24px;
+  margin-bottom: 1.6rem;
 }
 
 /*--------------------------------------------------------------
@@ -837,9 +834,7 @@ textarea {
 # Layout > Header
 --------------------------------------------------------------*/
 .l-header .site-controls {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: flex-column;
 }
 @media (min-width: 768px) {
   .l-header .site-controls {
@@ -848,7 +843,8 @@ textarea {
 }
 .l-header .main-navigation,
 .l-header .main-search {
-  width: 50%;
+  width: 100%;
+  background: #fafafa;
 }
 @media (min-width: 768px) {
   .l-header .main-navigation,
@@ -881,6 +877,12 @@ textarea {
 .site {
   max-width: 940px;
   margin: 0 auto;
+  background: #fff;
+}
+@media (max-width: 767px) {
+  .site {
+    padding: 1rem;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -983,10 +985,17 @@ textarea {
 
 .nav-menu {
   display: none;
+  padding-left: 0;
 }
 @media (min-width: 768px) {
   .nav-menu {
-    display: block;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    border-bottom: 1px solid #e8e8e8;
   }
 }
 
@@ -995,8 +1004,27 @@ textarea {
 }
 @media (min-width: 768px) {
   .menu-item {
-    display: inline-block;
+    -webkit-flex: 1 1 auto;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+    text-align: center;
+    white-space: nowrap;
   }
+}
+.menu-item a {
+  display: block;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  color: #000256;
+}
+@media (max-width: 767px) {
+  .menu-item a {
+    padding-left: 24px;
+  }
+}
+.menu-item a:hover {
+  background: #fff;
+  color: #5b85cf;
 }
 
 @media (max-width: 767px) {
@@ -1006,7 +1034,7 @@ textarea {
 }
 
 .menu-toggle {
-  width: 50%;
+  width: 100%;
   display: block;
 }
 @media (min-width: 768px) {

@@ -141,6 +141,7 @@ gulp.task('js', function() {
 
 // DEFAULT
 gulp.task('default', ['compass', 'js', 'browser-sync'], function(){
+  gulp.watch(paths.styles, ['compass']);
   gulp.watch(paths.scss, ['compass']);
   gulp.watch(paths.scripts, ['js']);
 });
