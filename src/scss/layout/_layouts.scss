@@ -15,11 +15,32 @@
 
 .site {
   max-width: 940px;
-  margin: 0 auto;
+  @include leader(1);
+  @include trailer(1);
+  margin-right: auto;
+  margin-left: auto;
   background: $color__white;
+  border: 1px solid $color__border;
+  box-shadow: 0px 5px 10px #ddd;
 }
 
 .site-content {
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 0 1rem;
+  @include tabletUp {
+    display: flex;
+  }
+}
+
+#primary {
+  @include tabletUp {
+    padding-right: 1rem;
+
+  }
+}
+
+#secondary {
+  @include tabletUp {
+    width: 280px;
+    min-width: 280px;
+  }
 }
