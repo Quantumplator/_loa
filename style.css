@@ -878,6 +878,11 @@ textarea {
 /*--------------------------------------------------------------
 # Layout > Single Posts or Pages
 --------------------------------------------------------------*/
+.site {
+  max-width: 940px;
+  margin: 0 auto;
+}
+
 /*--------------------------------------------------------------
 # Module
 --------------------------------------------------------------*/
@@ -979,20 +984,32 @@ textarea {
 .nav-menu {
   display: none;
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .nav-menu {
     display: block;
   }
 }
 
-.toggled .nav-menu {
+.menu-item {
   display: block;
+}
+@media (min-width: 768px) {
+  .menu-item {
+    display: inline-block;
+  }
+}
+
+@media (max-width: 767px) {
+  .toggled .nav-menu {
+    display: block;
+  }
 }
 
 .menu-toggle {
-  display: inline-block;
+  width: 50%;
+  display: block;
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .menu-toggle {
     display: none;
   }
